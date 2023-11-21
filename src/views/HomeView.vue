@@ -104,9 +104,11 @@ export default {
     },
     getCardsLocalStorage() {
       const storedDataString = localStorage.getItem('cards');
-      if (storedDataString == 'null') return this.isDuplicateCity();
       const storedData = JSON.parse(storedDataString);
-      this.cards = storedData;
+
+      if (storedData && storedData.length) {
+        this.cards = storedData;
+      }
       this.isDuplicateCity();
     },
     saveModal() {
