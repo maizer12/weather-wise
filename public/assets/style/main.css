@@ -1,0 +1,32 @@
+@import './null.css';
+@import './animations.css';
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+body {
+  background-color: #f2f3fc;
+}
+main {
+  padding: 48px 0 62px;
+  height: 100%;
+}
+.error {
+  color: rgb(197, 0, 0);
+  margin-bottom: 15px;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+.btn-modal {
+  max-width: 120px;
+}
+@media (max-width: 500px) {
+  main {
+    padding: 28px 0 32px;
+    height: 100%;
+  }
+}
