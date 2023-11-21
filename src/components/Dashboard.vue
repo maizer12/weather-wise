@@ -93,9 +93,11 @@ export default {
     },
     getFavoritesLocalStorage() {
       const storedDataString = localStorage.getItem('favorites');
-      if (storedDataString == 'null') return;
       const storedData = JSON.parse(storedDataString);
-      this.favorites = storedData;
+
+      if (storedData && storedData.length) {
+        this.favorites = storedData;
+      }
     },
     openChard(card) {
       if (this.chartData.id && this.chartData.id == card.id) {
