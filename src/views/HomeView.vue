@@ -1,14 +1,18 @@
 <template>
+<!--  Глобальные стили - минус. У нас же SFC, стили пишем в <style scoped> -->
   <main class="home-page">
     <div class="home-page__inner container">
       <search-form @search="getCard" :loading="loading" :errorCard="errorCard" />
+<!--   Аттрибуты, пропсы и все-все-все что прокидывается в компонент ВСЕГДА именуем через kebab-case   -->
       <Dashboard
         :cards="cards"
         alertText="Enter the city name in the input field to proceed."
         @deleteCard="deleteCardCity($event)"
         :useDeleteCard="true"
       />
+<!--   Компоненты ВСЕГДА именуем в одном стиле или "ВотТак" или "вот-так"    -->
       <modal-state v-if="modal.show" @close="resetModal">
+<!--      Используем сокращенную запись для слотов <template #text>, <template #buttons>  -->
         <template v-slot:text>{{ modal.text }}</template>
         <template v-slot:buttons>
           <btn-state class="btn-modal" @click="saveModal" v-if="modal.id"> Yes </btn-state>

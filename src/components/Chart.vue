@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     renderChart() {
+      // можно использовать ref
       const ctx = document.getElementById('myChart').getContext('2d');
       if (ctx) {
         this.chart = new Chart(ctx, {
