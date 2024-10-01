@@ -1,12 +1,15 @@
 <template>
   <div class="alert-state">
+<!--    Мелочь, но - всегда добавляем alt картинке -->
     <img src="@/assets/images/icons/info.svg" alt="" />
+<!--  <slot></slot> => <slot />  -->
     <p class="alert-state__text"><slot></slot></p>
   </div>
 </template>
 
 <script>
 export default {
+  // Даем name ВСЕГДА в PascalCase
   name: 'alert-state',
 };
 </script>
@@ -20,12 +23,13 @@ export default {
   width: fit-content;
   align-items: center;
 }
+/* Энтеры ставим между стилями чтобы было разделение */
 .alert-state img {
   width: 32px;
 }
 .alert-state__text {
   color: #000000;
-  font-family: Montserrat;
+  font-family: Montserrat; /* Нет фоллбека для шрифта */
   font-size: 21px;
   font-style: normal;
   font-weight: 600;

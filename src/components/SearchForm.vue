@@ -23,11 +23,14 @@ export default {
     };
   },
   methods: {
+    // Красавчик, дебаунс есть
     getAutoCompleteResults: debounce(async function (query) {
       if (query.length < 1) {
         this.autoCompleteResults = [];
         return;
       }
+      
+      // Используем URL класс для создания урла с параметрами и всем таким - https://www.valentinog.com/blog/url/
       const apiUrl = `https://secure.geonames.org/searchJSON?q=${query}&maxRows=10&username=${geoNames}`;
 
       try {
@@ -36,6 +39,7 @@ export default {
         const uniqueCityNames = new Set();
         this.err = '';
         this.autoCompleteResults = geonames.filter((e) => {
+          // эта проверка лишняя, ведь у нас уже new Set выше. Можем просто делать this.autoCompleteResults = [...getonames] - и будет массив обычный
           if (e.name.split(' ').length === 1 && !uniqueCityNames.has(e.name)) {
             uniqueCityNames.add(e.name);
             return true;
@@ -52,9 +56,12 @@ export default {
       this.startSearch(this.selectedItem);
     },
     startSearch(ell) {
+      // никогда не делаем if в одну строку
+      // никогда в return не делаем действий, тут особенно страшно - присваивание
       if (!ell.name) return (this.err = 'Please fill in the required field.');
       this.$emit('search', ell);
     },
+    // ну тут можно было эвент сделать типа onClickOutside, есть такой подход, везде используется
     handelBlur() {
       setTimeout(() => {
         this.closeSearch = true;
@@ -63,6 +70,7 @@ export default {
   },
   watch: {
     searchQuery(newSearch) {
+      // подозрительная строчка, мне кажется это костыль
       this.closeSearch = false;
       this.getAutoCompleteResults(newSearch);
     },
@@ -88,6 +96,7 @@ export default {
           @click="selectCity(elem)"
           :class="{ 'active-item': elem.name == selectedItem.name }"
         >
+<!--          Используем тройное "===" для консистентности -->
           {{ elem.name }}, {{ elem.countryName || elem.name }}
         </li>
       </ul>

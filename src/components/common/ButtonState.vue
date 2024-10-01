@@ -1,4 +1,5 @@
 <template>
+<!--  Вместо data-variant и вообще дата-атрибутов просто используй computed и навешивай нужные классы -->
   <button class="button" :data-variant="variant">
     <slot></slot>
   </button>
@@ -10,6 +11,7 @@ export default {
   props: {
     variant: {
       type: String,
+      // не хватает validator или же хотя бы JSDoc, чтобы тип норм было описывать
       default: 'outline',
     },
   },
