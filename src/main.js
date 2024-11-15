@@ -1,8 +1,8 @@
-import './assets/style/main.css';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import UI from './components/common/_config';
+import './assets/style/main.css';
 
 const app = createApp(App);
 

@@ -1,7 +1,5 @@
 <script>
 import { debounce } from 'lodash';
-import { geoNames } from '@/_config.js';
-
 export default {
   props: {
     loading: {
@@ -20,6 +18,8 @@ export default {
       closeSearch: false,
       autoCompleteResults: [],
       err: '',
+      apiKeyWeather: 'd4b4f4b2c5a2a6b4a5b4a6b4a5b4a6b4',
+      geoNames: 'mizer123',
     };
   },
   methods: {
@@ -28,7 +28,7 @@ export default {
         this.autoCompleteResults = [];
         return;
       }
-      const apiUrl = `https://secure.geonames.org/searchJSON?q=${query}&maxRows=10&username=${geoNames}`;
+      const apiUrl = `https://secure.geonames.org/searchJSON?q=${query}&maxRows=10&username=${this.geoNames}`;
 
       try {
         const response = await fetch(apiUrl);

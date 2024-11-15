@@ -1,0 +1,8 @@
+.nav-link {
+    @apply text-base relative font-semibold sm:text-lg duration-700 text-gray-400 [&.active]:text-black [&.active]:after:w-full hover:text-black hover:after:w-full;
+}
+
+.nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-black duration-700;
+}

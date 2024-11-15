@@ -22,7 +22,6 @@
 <script>
 import SearchForm from '@/components/SearchForm.vue';
 import Dashboard from '@/components/Dashboard.vue';
-import { apiKeyWeather } from '@/_config.js';
 
 export default {
   components: {
@@ -35,6 +34,7 @@ export default {
       loading: false,
       errorCard: '',
       modal: {},
+      apiKeyWeather: 'b6a5d0d1b0c5d0d1b0c5d0d1b0c5d0d1',
     };
   },
   methods: {
@@ -57,7 +57,7 @@ export default {
       this.loading = true;
 
       try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKeyWeather}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKeyWeather}`);
         const data = await response.json();
 
         if (this.cards.find((e) => e.id === data.id)) {

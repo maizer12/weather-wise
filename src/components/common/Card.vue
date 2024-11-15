@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import { apiKeyWeather } from '@/_config.js';
 import dayIcon from '../../assets/images/day.png';
 
 export default {
@@ -101,6 +100,7 @@ export default {
       weekData: null,
       loading: false,
       error: null,
+      apiKeyWeather: 'd4b4f4b2c5a2a6b4a5b4a6b4a5b4a6b4',
     };
   },
   methods: {
@@ -114,7 +114,7 @@ export default {
     switchTimeData() {
       if (this.weekData) return (this.time = 'week');
       this.loading = true;
-      fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + this.city + '&appid=' + apiKeyWeather)
+      fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + this.city + '&appid=' + this.apiKeyWeather)
         .then((response) => response.json())
         .then((data) => {
           this.error = null;

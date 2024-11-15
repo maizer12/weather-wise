@@ -1,5 +1,10 @@
 @import './null.css';
 @import './animations.css';
+@import './elements.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .container {
   max-width: 1200px;

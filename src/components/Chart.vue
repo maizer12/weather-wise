@@ -4,7 +4,6 @@
 
 <script>
 import { Chart, registerables } from 'chart.js';
-import { apiKeyWeather } from '@/_config.js';
 
 Chart.register(...registerables);
 
@@ -22,6 +21,7 @@ export default {
         temp: [],
         time: [],
       },
+      apiKeyWeather: 'd4b4f4b2c5a2a6b4a5b4a6b4a5b4a6b4',
     };
   },
   mounted() {
@@ -73,7 +73,7 @@ export default {
 
     async getData(city) {
       try {
-        const response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + apiKeyWeather);
+        const response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + this.apiKeyWeather);
         const data = await response.json();
 
         const newGraph = {
